@@ -6,6 +6,7 @@ import PostDetail from './components/PostDetail';
 import UserList from './components/UserList';
 import SubscribeForm from './components/SubscribeForm';
 import PostForm from './components/PostForm';
+import UserProfile from './components/UserProfile';
 
 function App() {
     return (
@@ -15,7 +16,7 @@ function App() {
                     <NavBar />
                 </header>
                 <Routes>
-                    <Route path="/posts" element={<PostList />} />
+                    <Route path="/posts" element={<PostList subreddit="test"/>} />
                     <Route path="/post/:postId" element={<PostDetail />} />
                     <Route path="/users" element={<UserList users={[]} />} />
                     <Route path="/subscribe" element={<SubscribeForm userId="yourUserId" />} />

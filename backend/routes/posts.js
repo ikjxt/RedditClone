@@ -16,4 +16,20 @@ router.post('/posts', async (req, res) => {
     }
 });
 
+router.get('/subreddits/:subreddit/posts', async (req, res) => {
+    try {
+        const subreddit = req.params.subreddit;
+        const posts = await Post.find({ subreddit }).sort({ createdAt: -1 });
+
+        if (!posts) {
+            return res.status(404).json({ message: 'No posts found for this subreddit' });
+        }
+
+        res.json(posts);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 module.exports = router;
